@@ -26,8 +26,10 @@ class Node:
     def __str__(self):
         return str(self.state)
 
+
     def __repr__(self):
         return ("Node: %s" %(str(self.state)))
+
 
 
 def depthFirstSearch(problem):
@@ -36,6 +38,7 @@ def depthFirstSearch(problem):
     """
     startTime = time()
     solution = []
+    stateHistory = []
     print("Working...")
 
     # node = (xy-coord, parent node, direction from parent to node, cost)
@@ -48,19 +51,25 @@ def depthFirstSearch(problem):
     while True:
         if fringe.isEmpty():
             print("Failed to find path!")
+            endTime = time()
+            elapsedTime = endTime - startTime
+            print(elapsedTime)
+            print(len(explored))
             return
         node = fringe.pop()
         if problem.isGoalState(node.state):
             while node.state != problem.getStartState():
                 solution.append(node.action)
+                stateHistory.append(node)
                 node = node.parent
             solution.reverse()
+            stateHistory.reverse()
             endTime = time()
             elapsedTime = endTime - startTime
             print("Solution found!")
             print(elapsedTime)
             print(len(explored))
-            return solution, explored, elapsedTime
+            return solution, explored, elapsedTime, stateHistory
         explored.add(node.state)
         for neighbor in problem.getSuccessors(node.state):
             child = Node(neighbor[0], node, neighbor[1], neighbor[2])
@@ -69,6 +78,9 @@ def depthFirstSearch(problem):
 
 
 def breadthFirstSearch(problem):
+    """Breadth-first search algorithm
+
+    """
     pass
 
 

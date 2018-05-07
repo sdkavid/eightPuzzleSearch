@@ -21,8 +21,10 @@ class EightPuzzle:
     def __str__(self):
         return str(self.cells)
 
+
     def __repr__(self):
         return ("EightPuzzle: %s" %(str(self.cells)))
+
 
     def __eq__(self, other):
         for row in range(3):
@@ -40,8 +42,31 @@ class EightPuzzle:
         """Checks if the 8-puzzle is actually solvable, by
         checking the number of inversions in the input state.
         """
-        pass
+        array = str(self)
+        deleted = str.maketrans(dict.fromkeys("[,]"))
+        array = array.translate(deleted)
+        array = array.split(" ")
+        array = [int(num) for num in array]
+        print(array)
 
+        inversions = 0
+        x = 0
+        while x < 8:
+            if (array[x] != 0):
+                y = x+1
+                while y < 9:
+                    if (array[y] != 0):
+                        if (array[x] > array[y]):
+                            inversions += 1
+                    y += 1
+            x += 1
+
+        if (inversions % 2) == 1:
+            print(inversions)
+            return False
+        else:
+            print(inversions)
+            return True
 
     def isGoal(self):
         cell = 0
