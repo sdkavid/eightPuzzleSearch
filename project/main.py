@@ -127,7 +127,7 @@ class Application(tk.Frame):
             self.currentState = newState
 
             self.counter = tk.Label(self, text="Currently on step %s of %s."
-                %(newState, len(self.solution[0]))
+                %(newState, (len(self.solution[0]) - 1))
                 )
             self.counter.grid(row=13, column=1, columnspan=5, padx=5, pady=5)
 
@@ -136,7 +136,7 @@ class Application(tk.Frame):
         """Render the next step in the 8-puzzle solution.
         
         """
-        if self.currentState == (len(self.solution[1]) - 1):
+        if self.currentState == (len(self.solution[0]) - 1):
             pass
         else:
             self.clearSteps()
@@ -145,7 +145,7 @@ class Application(tk.Frame):
             self.currentState = newState
 
             self.counter = tk.Label(self, text="Currently on step %s of %s."
-                %(newState, len(self.solution[0]))
+                %(newState, (len(self.solution[0]) - 1))
                 )
             self.counter.grid(row=13, column=1, columnspan=5, padx=5, pady=5)
 
@@ -175,31 +175,31 @@ class Application(tk.Frame):
             self.solution = search.depthFirstSearch(self.problem)
             self.stateHistory = self.solution[3]
         elif searchAlgorithm == "Breadth-first Search":
-            #self.solution = search.breadthFirstSearch(self.problem)
-            #self.pathHistory = self.solution[3]
+            self.solution = search.breadthFirstSearch(self.problem)
+            self.stateHistory = self.solution[3]
             pass
         elif searchAlgorithm == "Uniform-cost Search":
             #self.solution = search.uniformCostSearch(self.problem)
-            #self.pathHistory = self.solution[3]
+            #self.stateHistory = self.solution[3]
             pass
         elif searchAlgorithm == "Greedy Best-first Search":
             #self.solution = search.greedyBestFirstSearch(self.problem)
-            #self.pathHistory = self.solution[3]
+            #self.stateHistory = self.solution[3]
             pass
         elif searchAlgorithm == "A* Search [Manhattan Dist.]":
             #self.solution = search.aStarSearch(self.problem)
-            #self.pathHistory = self.solution[3]
+            #self.stateHistory = self.solution[3]
             pass
         else:
             #self.solution = search.recursiveBestFirstSearch(self.problem)
-            #self.pathHistory = self.solution[3]
+            #self.stateHistory = self.solution[3]
             pass
 
         self.stats = tk.Label(self, text= (
                 "A solution was found in %.3f seconds and requires %s moves."
                 %(
                     self.solution[2],
-                    len(self.solution[0])
+                    (len(self.solution[0]) - 1)
                     )
                 )
             )
