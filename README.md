@@ -4,6 +4,7 @@
 This Python program features a tkinter user interface that allows users to generate random eight-puzzles and solve them with their choice of search algorithm. Once a solution has been found, the program will display statistics such as time elapsed for the search, number of nodes expanded, and number of moves required.
 
 Here is a screenshot of the program:
+
 ![alt text](https://raw.githubusercontent.com/sdkavid/eightPuzzleSearch/master/src/img/screenshot.png "Screenshot")
 
 As of **5/8/2018**, the following search algorithms have been implemented:  
