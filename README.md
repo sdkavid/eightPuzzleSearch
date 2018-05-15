@@ -23,3 +23,4 @@ Further notes:
   * Only solvable eight-puzzles will be generated. This is done with a check on the number of inversions in the input state of the puzzle.
   * The selection of search algorithms is accessible using a dropdown menu.
   * Currently, you can run the program using main.py, but I plan to create a Windows executable in the near future.
+  * Implemented in Python 3, do not use Python 2 versions.
