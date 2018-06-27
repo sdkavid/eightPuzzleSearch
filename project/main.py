@@ -179,8 +179,8 @@ class Application(tk.Frame):
             self.stateHistory = self.solution[3]
             pass
         elif searchAlgorithm == "Uniform-cost Search":
-            #self.solution = search.uniformCostSearch(self.problem)
-            #self.stateHistory = self.solution[3]
+            self.solution = search.uniformCostSearch(self.problem)
+            self.stateHistory = self.solution[3]
             pass
         elif searchAlgorithm == "Greedy Best-first Search":
             #self.solution = search.greedyBestFirstSearch(self.problem)
