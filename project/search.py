@@ -39,7 +39,6 @@ def depthFirstSearch(problem):
     startTime = time()
     solution = []
     stateHistory = []
-    print("Working...")
 
     # node = (xy-coord, parent node, direction from parent to node, cost)
     node = Node(problem.getStartState(), None, None, None)
@@ -50,11 +49,8 @@ def depthFirstSearch(problem):
 
     while True:
         if fringe.isEmpty():
-            print("Failed to find path!")
             endTime = time()
             elapsedTime = endTime - startTime
-            print(elapsedTime)
-            print(len(explored))
             return
         node = fringe.pop()
         if problem.isGoalState(node.state):
@@ -66,9 +62,6 @@ def depthFirstSearch(problem):
             stateHistory.reverse()
             endTime = time()
             elapsedTime = endTime - startTime
-            print("Solution found!")
-            print(elapsedTime)
-            print(len(explored))
             return solution, explored, elapsedTime, stateHistory
         explored.add(node.state)
         for neighbor in problem.getSuccessors(node.state):
@@ -84,7 +77,6 @@ def breadthFirstSearch(problem):
     startTime = time()
     solution = []
     stateHistory = []
-    print("Working...")
 
     # node = (xy-coord, parent node, direction from parent to node, cost)
     node = Node(problem.getStartState(), None, None, None)
@@ -95,11 +87,8 @@ def breadthFirstSearch(problem):
 
     while True:
         if fringe.isEmpty():
-            print("Failed to find path!")
             endTime = time()
             elapsedTime = endTime - startTime
-            print(elapsedTime)
-            print(len(explored))
             return
         node = fringe.pop()
         if problem.isGoalState(node.state):
@@ -111,9 +100,6 @@ def breadthFirstSearch(problem):
             stateHistory.reverse()
             endTime = time()
             elapsedTime = endTime - startTime
-            print("Solution found!")
-            print(elapsedTime)
-            print(len(explored))
             return solution, explored, elapsedTime, stateHistory
         explored.add(node.state)
         for neighbor in problem.getSuccessors(node.state):
@@ -129,7 +115,6 @@ def uniformCostSearch(problem):
     startTime = time()
     solution = []
     stateHistory = []
-    print("Working...")
 
     # node = (xy-coord, parent node, direction from parent to node, cost)
     node = Node(problem.getStartState(), None, None, 0)
@@ -140,7 +125,6 @@ def uniformCostSearch(problem):
 
     while True:
         if fringe.isEmpty():
-            print("Failed to find path!")
             endTime = time()
             elapsedTime = endTime - startTime
             print(elapsedTime)
@@ -156,10 +140,6 @@ def uniformCostSearch(problem):
             stateHistory.reverse()
             endTime = time()
             elapsedTime = endTime - startTime
-            print("Solution found!")
-            print(elapsedTime)
-            print(len(explored))
-            print(node.cost)
             return solution, explored, elapsedTime, stateHistory
         explored.add(node.state)
         for neighbor in problem.getSuccessors(node.state):
