@@ -7,12 +7,12 @@ Here is a screenshot of the program:
 
 ![alt text](https://raw.githubusercontent.com/sdkavid/eightPuzzleSearch/master/src/img/screenshot.png "Screenshot")
 
-As of **6/26/2018**, the following search algorithms have been implemented:  
+As of **6/30/2018**, the following search algorithms have been implemented:  
 1. Depth-first Search
 2. Breadth-first Search
-3. Uniform-cost Search
 
 And the following search algorithms are planned to be added:  
+* Uniform-cost Search (in progress)
 * Greedy Best-first Search
 * A* Search [Manhattan Distance Heuristic]
 * Recursive Best-first Search
