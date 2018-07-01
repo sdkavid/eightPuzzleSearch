@@ -45,6 +45,8 @@ class PriorityQueue:
     def isEmpty(self):
         return len(self.heap) == 0
 
+    # need method to replace priority value of an entry?
+
 
 def raiseNotDefined():
     print("Method not implemented: %s" % inspect.stack()[1][3])

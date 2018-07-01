@@ -49,8 +49,6 @@ def depthFirstSearch(problem):
 
     while True:
         if fringe.isEmpty():
-            endTime = time()
-            elapsedTime = endTime - startTime
             return
         node = fringe.pop()
         if problem.isGoalState(node.state):
@@ -87,8 +85,6 @@ def breadthFirstSearch(problem):
 
     while True:
         if fringe.isEmpty():
-            endTime = time()
-            elapsedTime = endTime - startTime
             return
         node = fringe.pop()
         if problem.isGoalState(node.state):
@@ -119,16 +115,12 @@ def uniformCostSearch(problem):
     # node = (xy-coord, parent node, direction from parent to node, cost)
     node = Node(problem.getStartState(), None, None, 0)
 
-    fringe = util.Queue()
-    fringe.push(node)
+    fringe = util.PriorityQueue()
+    fringe.push(node, 0)
     explored = set()
 
     while True:
         if fringe.isEmpty():
-            endTime = time()
-            elapsedTime = endTime - startTime
-            print(elapsedTime)
-            print(len(explored))
             return
         node = fringe.pop()
         if problem.isGoalState(node.state):
@@ -145,7 +137,11 @@ def uniformCostSearch(problem):
         for neighbor in problem.getSuccessors(node.state):
             child = Node(neighbor[0], node, neighbor[1], neighbor[2]+node.cost)
             if (child.state not in explored):
-                fringe.push(child)
+                fringe.push(child, child.cost)
+            else:
+                # if child.state is in fringe with higher path cost
+                # replace that fringe node with child
+                pass
 
 
 def greedyBestFirstSearch(problem):
